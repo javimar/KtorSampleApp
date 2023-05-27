@@ -10,6 +10,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import eu.javimar.ktorsample.data.network.PostsService
 import eu.javimar.ktorsample.data.network.PostsServiceImpl
+import eu.javimar.ktorsample.data.urls.BASE_URL
+import eu.javimar.ktorsample.data.urls.TIME_OUT_MILLIS
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.okhttp.OkHttp
@@ -28,8 +30,7 @@ import java.util.concurrent.TimeUnit
 object NetworkModule {
 
     @Provides
-    fun providePostService(httpClient: HttpClient): PostsService =
-        PostsServiceImpl(httpClient)
+    fun providePostService(httpClient: HttpClient): PostsService = PostsServiceImpl(httpClient)
 
     @Provides
     fun provideKtorClient(@ApplicationContext context: Context): HttpClient {
@@ -39,7 +40,7 @@ object NetworkModule {
                 logger = Logger.ANDROID
                 level = LogLevel.BODY
                 filter { request ->
-                    request.url.host.contains("jsonplaceholder.typicode.com")
+                    request.url.host.contains(BASE_URL)
                 }
                 sanitizeHeader { header -> header == HttpHeaders.Authorization }
             }
@@ -65,7 +66,7 @@ object NetworkModule {
         // creating the Ktor HttpClienEngine
         return OkHttp.create {
              config {
-                 connectTimeout(4000, TimeUnit.MILLISECONDS)
+                 connectTimeout(TIME_OUT_MILLIS, TimeUnit.MILLISECONDS)
              }
             addInterceptor(chuckerInterceptor)
         }

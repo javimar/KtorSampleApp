@@ -2,6 +2,8 @@ package eu.javimar.ktorsample.data.network
 
 import eu.javimar.ktorsample.data.dto.PostRequest
 import eu.javimar.ktorsample.data.dto.PostResponse
+import eu.javimar.ktorsample.data.urls.BASE_URL
+import eu.javimar.ktorsample.data.urls.POSTS
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
@@ -25,8 +27,8 @@ class PostsServiceImpl(
             val result = ktorClient.get {
                 url {
                     protocol = URLProtocol.HTTPS
-                    host = "jsonplaceholder.typicode.com"
-                    path("posts")
+                    host = BASE_URL
+                    path(POSTS)
 //                    parameters.append("token", "123")
                 }
             }
