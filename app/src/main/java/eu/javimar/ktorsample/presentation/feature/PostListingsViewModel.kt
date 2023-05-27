@@ -1,7 +1,8 @@
 package eu.javimar.ktorsample.presentation.feature
 
-import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,8 +16,8 @@ class PostListingsViewModel @Inject constructor(
     private val postsService: PostsService
 ): ViewModel() {
 
-    private val _postState = mutableStateOf(PostsState())
-    val postState: State<PostsState> = _postState
+    var postState by mutableStateOf(PostsState())
+        private set
 
     init {
         getPosts()
@@ -24,7 +25,7 @@ class PostListingsViewModel @Inject constructor(
 
     private fun getPosts() {
         viewModelScope.launch {
-            _postState.value = postState.value.copy(
+            postState = postState.copy(
                 posts = postsService.getPosts()
             )
         }

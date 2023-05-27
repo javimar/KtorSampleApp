@@ -9,7 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import eu.javimar.ktorsample.nav.ListingsNavGraph
+import eu.javimar.ktorsample.nav.HomeNavGraph
 import eu.javimar.ktorsample.ui.theme.KtorSampleTheme
 
 @AndroidEntryPoint
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ListingsNavGraph(
+                    HomeNavGraph(
                         navController = rememberNavController()
                     )
                 }

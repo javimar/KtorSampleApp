@@ -7,7 +7,7 @@ import eu.javimar.ktorsample.nav.destinations.postListingsDestination
 import eu.javimar.ktorsample.nav.screens.HomeGraphScreens
 
 @Composable
-fun ListingsNavGraph(
+fun HomeNavGraph(
     navController: NavHostController
 ) {
     NavHost(

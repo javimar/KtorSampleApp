@@ -13,13 +13,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import eu.javimar.ktorsample.presentation.feature.state.PostsState
+@Composable
+fun PostListingMain(
+    vm: PostListingsViewModel = hiltViewModel()
+) {
+    PostListingScreen(vm.postState)
+}
+
 
 @Composable
 fun PostListingScreen(
-    vm: PostListingsViewModel = hiltViewModel()
+    state: PostsState
 ) {
-    val state = vm.postState.value
-
     LazyColumn {
         items(state.posts) {
             Column(
