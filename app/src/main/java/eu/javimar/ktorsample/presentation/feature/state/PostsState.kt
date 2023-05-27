@@ -1,4 +1,4 @@
-package eu.javimar.ktorsample.presentation.state
+package eu.javimar.ktorsample.presentation.feature.state
 
 import eu.javimar.ktorsample.data.dto.PostResponse
 

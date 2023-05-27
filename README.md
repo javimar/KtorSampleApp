@@ -1,2 +1,2 @@
 # KtorSampleApp
-Sample App using Ktor Client, HILT and JetpackCompose
+Sample App using Ktor Client, HILT and Jetpack Compose
